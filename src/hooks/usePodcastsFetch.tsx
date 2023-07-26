@@ -1,29 +1,6 @@
 import React from 'react'
-import { PodcastType } from '../types'
-
-interface Podcast {
-  'im:name': { label: string };
-  'im:image': { label: string; attributes: { height: string } }[];
-  summary: { label: string };
-  'im:price': { label: string; attributes: { amount: string; currency: string } };
-  'im:contentType': { attributes: { term: string; label: string } };
-  rights: { label: string };
-  title: { label: string };
-  link: { attributes: { rel: string; type: string; href: string } };
-  id: { label: string; attributes: { 'im:id': string } };
-  'im:artist': { label: string; attributes: { href: string } };
-  category: {
-    attributes: { 'im:id': string; term: string; scheme: string; label: string };
-  };
-  'im:releaseDate': { label: string; attributes: { label: string } };
-}
-
-interface PodcastListData {
-  feed: {
-    author: { name: { label: string }; uri: { label: string } };
-    entry: Podcast[];
-  };
-}
+import { PodcastListData, PodcastType } from '../types'
+import { getNormalizedData } from '../utils'
 
 const usePodcastsFetch = () => {
   const [podcasts, setPodcasts] = React.useState<PodcastType[]>([])
@@ -52,14 +29,9 @@ const usePodcastsFetch = () => {
         setLoading(true)
         const response = await fetch('https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json')
         const data: PodcastListData = await response.json()
-        const newData = data.feed.entry.map((item) => {
-          return {
-            title: item.title.label,
-            image: item['im:image'][2].label,
-            author: item['im:artist'].label,
-            id: item.id.attributes['im:id']
-          }
-        })
+        const newData = getNormalizedData(data)
+        console.log(data)
+        // Save fetched data + current time on localStorage
         localStorage.setItem(storageKey, JSON.stringify(newData))
         localStorage.setItem(`${storageKey}-lastFetchedDate`, String(new Date().getTime()))
 
