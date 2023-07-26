@@ -4,7 +4,16 @@ import styles from './index.module.css'
 const Layout = () => {
   return (
     <div className={styles.container}>
-      <Outlet />
+      <header>
+        <div>
+          <h1 className={styles.title}> Podcaster</h1>
+          <div className={styles.line} /> {/* This div creates the line */}
+
+        </div>
+      </header>
+      <main>
+        <Outlet />
+      </main>
     </div>
   )
 }

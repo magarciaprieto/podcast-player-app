@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom'
-import { PodcastType } from '../../types'
+import { PodcastListType } from '../../types'
 import styles from './index.module.css'
 
 interface ListItemProps {
-  podcast: PodcastType
+  podcast: PodcastListType
 }
 const ListItem = ({ podcast }: ListItemProps) => {
   const navigate = useNavigate()

@@ -1,6 +1,13 @@
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   margin: 0 18rem
+}
+
+.title {
+  color: #483285;
+}
+
+.line {
+  width: 100%;
+  height: 3px;
+  background-color: #D2D2D2;
 }
