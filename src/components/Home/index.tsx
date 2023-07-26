@@ -1,34 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from 'react'
 import ListItem from '../ListItem'
-import { PodcastType } from '../../types'
 import styles from './index.module.css'
+import usePodcastsFetch from '../../hooks/usePodcastsFetch'
 
 const Home = () => {
-  const [podcasts, setPodcasts] = React.useState<PodcastType[]>([])
+  const { podcasts, isFetching } = usePodcastsFetch()
 
-  React.useEffect(() => {
-    const fetchPodcasts = async () => {
-      try {
-        const response = await fetch('https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json')
-        const data = await response.json()
-        const newData = data.feed.entry.map((item: any) => {
-          return {
-            title: item.title.label,
-            image: item['im:image'][2].label,
-            author: item['im:artist'].label,
-            id: item.id.attributes['im:id']
-          }
-        })
-        setPodcasts(newData)
-      } catch (error) {
-        console.error('Error fetching podcasts:', error)
-      }
-    }
-
-    fetchPodcasts()
-  }, [])
-
+  if (isFetching) {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'end', width: '100vw' }}>Loading</div>
+    )
+  }
   return (
     <div>
       <h1>Top 100 Podcasts</h1>
