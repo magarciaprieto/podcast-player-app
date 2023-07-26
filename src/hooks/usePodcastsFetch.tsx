@@ -1,9 +1,9 @@
 import React from 'react'
-import { PodcastListData, PodcastType } from '../types'
-import { getNormalizedData } from '../utils'
+import { PodcastsListData, PodcastListType } from '../types'
+import { getPodcastsListNormalizedData } from '../utils'
 
 const usePodcastsFetch = () => {
-  const [podcasts, setPodcasts] = React.useState<PodcastType[]>([])
+  const [podcasts, setPodcasts] = React.useState<PodcastListType[]>([])
   const [loading, setLoading] = React.useState<boolean>(false)
 
   React.useEffect(() => {
@@ -15,7 +15,7 @@ const usePodcastsFetch = () => {
     const lastFetchedDate = localStorage.getItem(`${storageKey}-lastFetchedDate`)
 
     if (storedPodcasts && lastFetchedDate) {
-      const parsedPodcasts: PodcastType[] = JSON.parse(storedPodcasts)
+      const parsedPodcasts: PodcastListType[] = JSON.parse(storedPodcasts)
       // Check if there is 1 day diff.
       const currentTime = new Date().getTime()
       const lastFetchedTime = Number(lastFetchedDate)
@@ -28,8 +28,8 @@ const usePodcastsFetch = () => {
       try {
         setLoading(true)
         const response = await fetch('https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json')
-        const data: PodcastListData = await response.json()
-        const newData = getNormalizedData(data)
+        const data: PodcastsListData = await response.json()
+        const newData = getPodcastsListNormalizedData(data)
         console.log(data)
         // Save fetched data + current time on localStorage
         localStorage.setItem(storageKey, JSON.stringify(newData))
