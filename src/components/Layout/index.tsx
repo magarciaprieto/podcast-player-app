@@ -1,17 +1,19 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 import styles from './index.module.css'
 
 const Layout = () => {
+  const navigate = useNavigate()
+  const handleClick = () => {
+    navigate('/')
+  }
   return (
     <div className={styles.container}>
       <header>
-        <div>
-          <h1 className={styles.title}> Podcaster</h1>
-          <div className={styles.line} /> {/* This div creates the line */}
-
+        <div className={styles.line}>
+          <h1 className={styles.title} onClick={handleClick}>Podcaster</h1>
         </div>
       </header>
-      <main>
+      <main className={styles.mainContainer}>
         <Outlet />
       </main>
     </div>

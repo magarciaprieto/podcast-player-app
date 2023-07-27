@@ -5,7 +5,7 @@
   justify-content: center;
   position: relative;
   font-size: 1.25rem;
-  flex-basis: 25%; /* Each item takes up 25% of the container width to create 4 items in a row */
+  flex-basis: 25%;
   padding: .625rem;
   box-sizing: border-box;
   width: 100%;
@@ -20,7 +20,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 21.875rem;
+  width: 18.875rem;
   min-height: 12.5rem;
   z-index: 1;
   border: 1px solid #D2D2D2;
@@ -30,9 +30,9 @@
 }
 
 .circle {
-  width: 12.5rem;
+  width: 10.5rem;
   position: absolute;
-  height: 12.5rem;
+  height: 10.5rem;
   background-color: #ff6b6b;
   transform: translateY(-40%);
   border-radius: 50%;
