@@ -7,7 +7,7 @@ export const getPodcastsListNormalizedData = (data: PodcastsFetchedData): Podcas
       image: item['im:image'][2].label,
       author: item['im:artist'].label,
       id: item.id.attributes['im:id'],
-      description: item.summary.label
+      summary: item.summary.label
     }
   })
 }

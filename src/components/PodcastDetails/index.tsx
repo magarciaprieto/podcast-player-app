@@ -19,7 +19,7 @@ const PodcastDetails = ({ details, podcastId }: PodcastDetailsProps) => {
         <span className={styles.artist}>by {artistName}</span>
       </div>
       <div className={styles.textContainer}>
-        <span>{podcast.description}</span>
+        <span>{podcast.summary}</span>
       </div>
     </article>
   )

@@ -4,7 +4,7 @@ export type PodcastListType = {
   title: string;
   image: string;
   author: string;
-  description: string;
+  summary: string;
 }
 
 // Fetched data interfaces
