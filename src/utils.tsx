@@ -3,10 +3,11 @@ import { PodcastListType, PodcastEpisodes, PodcastEpisodesType, PodcastEpisodesD
 export const getPodcastsListNormalizedData = (data: PodcastsFetchedData): PodcastListType[] => {
   return data.feed.entry.map((item) => {
     return {
-      title: item.title.label,
+      title: item.title.label.substring(0, item.title.label.indexOf(' - ')),
       image: item['im:image'][2].label,
       author: item['im:artist'].label,
-      id: item.id.attributes['im:id']
+      id: item.id.attributes['im:id'],
+      description: item.summary.label
     }
   })
 }
