@@ -27,7 +27,16 @@ const usePodcastDetailsFetch = (id: string) => {
     const fetchPodcastDetails = async () => {
       try {
         setLoading(true)
+        /* const externalURL = `https://itunes.apple.com/lookup?id=${id}&media=podcast&entity=podcastEpisode&limit=20`
+        const encodedURL = encodeURIComponent(externalURL)
+        const allOriginsURL = `https://allorigins.win/get?url=${encodedURL}`
+        console.log(allOriginsURL)
+ */
         const response = await fetch(`https://itunes.apple.com/lookup?id=${id}&media=podcast&entity=podcastEpisode&limit=20`)
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch podcast details')
+        }
         const data: PodcastEpisodes = await response.json()
         const newData = getPodcastEpisodesDataNormalized(data)
         // Save fetched data + current time on localStorage

@@ -1,0 +1,30 @@
+.episodeContainer {
+  border: 1px solid #D2D2D2;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  box-shadow: 0px 2px 8px -1px rgba(0,0,0,0.65);
+  -webkit-box-shadow: 0px 2px 8px -1px rgba(0,0,0,0.65);
+  -moz-box-shadow: 0px 2px 8px -1px rgba(0,0,0,0.65);
+}
+
+.audioPlayer {
+  width: 100%;
+  background-color: black;
+  border-radius: 8px;
+}
+.audioPlayer audio {
+  background-color: black; /* Set the background color to black */
+}
+
+/* Style the play button */
+.audioPlayer audio::-webkit-media-controls-playback-button {
+  color: white; /* Set the color of the play button to white */
+}
+
+/* Style the volume control */
+.audioPlayer audio::-webkit-media-controls-volume-slider {
+  /* You can customize the appearance of the volume control here */
+  color: white; /* Set the color of the play button to white */
+}

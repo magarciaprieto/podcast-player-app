@@ -27,7 +27,15 @@ const usePodcastsFetch = () => {
     const fetchPodcasts = async () => {
       try {
         setLoading(true)
+        /* const externalURL = 'https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json'
+        const encodedURL = encodeURIComponent(externalURL)
+        const allOriginsURL = `https://allorigins.win/get?url=${encodedURL}` */
+
         const response = await fetch('https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json')
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch Podcasts')
+        }
         const data: PodcastsFetchedData = await response.json()
         console.log(data)
         const newData = getPodcastsListNormalizedData(data)

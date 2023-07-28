@@ -1,0 +1,37 @@
+.audioPlayer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.playButton,
+.volumeIconButton {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: black;
+  cursor: pointer;
+}
+
+.volumeControl {
+  display: inline-block;
+  width: 100px;
+  margin-left: 5px;
+}
+
+.progressBar {
+  flex: 1;
+  height: 4px;
+  background-color: black;
+  cursor: pointer;
+}
+
+.progress {
+  height: 100%;
+  background-color: black;
+}
+
+.reverseDuration {
+  margin-left: 10px;
+  color: black;
+}
