@@ -17,7 +17,6 @@ interface PlayerState {
 
 const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioUrl }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null)
-  const progressRef = useRef<HTMLDivElement | null>(null)
   const [playerState, setPlayerState] = useState<PlayerState>({
     isPlaying: false,
     showVolumeControl: false,
@@ -85,21 +84,15 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioUrl }) => {
     }
   }
 
-  const handleSeek = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (!progressRef.current || !audioRef.current) return
-
-    const progressBar = progressRef.current
-    const progressBarWidth = progressBar.clientWidth
-    const clickX = event.clientX - progressBar.getBoundingClientRect().left
-    const seekPercentage = clickX / progressBarWidth
-    const seekTime = duration * seekPercentage
-
-    setPlayerState((prevState) => ({
-      ...prevState,
-      currentTime: seekTime
-    }))
-
-    audioRef.current.currentTime = seekTime
+  const handleSeek = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (audioRef.current) {
+      const seekTime = parseFloat(event.target.value)
+      setPlayerState((prevState) => ({
+        ...prevState,
+        currentTime: seekTime
+      }))
+      audioRef.current.currentTime = seekTime
+    }
   }
 
   const formatTime = (time: number): string => {
@@ -107,8 +100,6 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioUrl }) => {
     const seconds = Math.floor(time % 60)
     return `${minutes}:${seconds.toString().padStart(2, '0')}`
   }
-
-  console.log(audioUrl)
   return (
     <div className={styles.audioPlayer}>
       <audio ref={audioRef} src={audioUrl} autoPlay={false} />
@@ -117,8 +108,18 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioUrl }) => {
         {isPlaying ? <FontAwesomeIcon icon={faPause} /> : <FontAwesomeIcon icon={faPlay} />}
       </button>
 
+      <input
+        className={styles.slider}
+        type='range'
+        min='0'
+        max={duration}
+        step='0.01'
+        value={currentTime}
+        onChange={handleSeek}
+      />
+      <span className={styles.reverseDuration}>{formatTime(duration - currentTime)}</span>
       <button className={styles.volumeIconButton} onClick={handleVolumeIconClick}>
-        <FontAwesomeIcon icon={showVolumeControl ? faVolumeMute : faVolumeUp} />
+        <FontAwesomeIcon icon={audioRef.current?.volume === 0 ? faVolumeMute : faVolumeUp} />
       </button>
 
       {showVolumeControl && (
@@ -133,11 +134,6 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioUrl }) => {
         />
       )}
 
-      <div className={styles.progressBar} onClick={handleSeek} ref={progressRef}>
-        <div className={styles.progress} style={{ width: `${(currentTime / duration) * 100}%` }} />
-      </div>
-
-      <span className={styles.reverseDuration}>{formatTime(duration - currentTime)}</span>
     </div>
   )
 }

@@ -1,7 +1,12 @@
 .audioPlayer {
   display: flex;
+  width: 100%;
+  justify-content: center;
   align-items: center;
-  gap: 10px;
+  border: 1px solid #D2D2D2;
+  padding: .4rem;
+  border-radius: 8px;
+  background-color: black;
 }
 
 .playButton,
@@ -9,7 +14,7 @@
   background: none;
   border: none;
   font-size: 1.5rem;
-  color: black;
+  color: white;
   cursor: pointer;
 }
 
@@ -19,19 +24,11 @@
   margin-left: 5px;
 }
 
-.progressBar {
-  flex: 1;
-  height: 4px;
-  background-color: black;
-  cursor: pointer;
-}
-
-.progress {
-  height: 100%;
-  background-color: black;
-}
-
 .reverseDuration {
   margin-left: 10px;
-  color: black;
+  color: white;
+}
+
+.slider {
+  flex-grow: 2;
 }
