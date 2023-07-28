@@ -1,7 +1,12 @@
 import { Outlet, useNavigate } from 'react-router-dom'
 import styles from './index.module.css'
+import Loading from '../Loading'
 
-const Layout = () => {
+interface LayoutProps {
+  isLoading: boolean;
+}
+
+const Layout = ({ isLoading }: LayoutProps) => {
   const navigate = useNavigate()
   const handleClick = () => {
     navigate('/')
@@ -9,8 +14,9 @@ const Layout = () => {
   return (
     <div className={styles.container}>
       <header>
-        <div className={styles.line}>
+        <div className={styles.header}>
           <h1 className={styles.title} onClick={handleClick}>Podcaster</h1>
+          {isLoading && <Loading />}
         </div>
       </header>
       <main className={styles.mainContainer}>

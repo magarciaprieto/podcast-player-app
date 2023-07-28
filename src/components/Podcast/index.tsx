@@ -1,20 +1,23 @@
+import React from 'react'
 import { useParams } from 'react-router-dom'
 import usePodcastDetailsFetch from '../../hooks/usePodcastDetailsFetch'
 import PodcastDetails from '../PodcastDetails'
 import { PodcastEpisodesDetails } from '../../types'
 import styles from './index.module.css'
-import Loading from '../Loading'
 import PodcastEpisodesList from '../PodcastEpisodesList'
 
-const Podcast = () => {
+interface PodcastProps {
+  onLoading: (value: boolean) => void
+}
+
+const Podcast = ({ onLoading }: PodcastProps) => {
   const { id } = useParams()
   const { podcastDetails, isFetching } = usePodcastDetailsFetch(id as string)
 
-  if (isFetching) {
-    return (
-      <Loading />
-    )
-  }
+  React.useEffect(() => {
+    onLoading(isFetching)
+  }, [isFetching, onLoading])
+
   return (
     <section>
       {podcastDetails &&

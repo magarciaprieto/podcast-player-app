@@ -1,16 +1,18 @@
+import React from 'react'
 import ListItem from '../ListItem'
 import styles from './index.module.css'
 import usePodcastsFetch from '../../hooks/usePodcastsFetch'
-import Loading from '../Loading'
 
-const Home = () => {
+interface HomeProps {
+  onLoading: (value: boolean) => void
+}
+const Home = ({ onLoading }: HomeProps) => {
   const { podcasts, isFetching } = usePodcastsFetch()
 
-  if (isFetching) {
-    return (
-      <Loading />
-    )
-  }
+  React.useEffect(() => {
+    onLoading(isFetching)
+  }, [isFetching, onLoading])
+
   return (
     <div>
       <div className={styles.listContainer}>
