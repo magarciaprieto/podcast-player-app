@@ -18,13 +18,13 @@ table {
 }
 
 th, td {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #D2D2D2;
   padding: .5rem;
   text-align: left;
 }
 
 .body tr:nth-child(odd) {
-  background-color: #e9e6e6;
+  background-color: #faf2f2;
   color: #000
 }
 
@@ -42,6 +42,8 @@ th, td {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  cursor: pointer;
+  color: #0f80c7
 }
 
 .releaseDate {

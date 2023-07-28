@@ -14,11 +14,17 @@ const PodcastEpisode = () => {
       {episode &&
         <div className={styles.container}>
           <div className={styles.cardContainer}>
-            <PodcastDetails podcastId={id as string} details={podcast?.details as PodcastEpisodesDetails} />
+            <PodcastDetails
+              enableRouting
+              podcastId={id as string}
+              details={podcast?.details as PodcastEpisodesDetails}
+            />
           </div>
 
           <div className={styles.episodeContainer}>
-            <EpisodeDetails episode={episode as PodcastEpisodeData} />
+            <EpisodeDetails
+              episode={episode as PodcastEpisodeData}
+            />
           </div>
 
         </div>}

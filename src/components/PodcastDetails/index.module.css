@@ -42,6 +42,10 @@
   margin: 0 1rem;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 .artist {
   font-style: italic;
   margin: 0 1rem;

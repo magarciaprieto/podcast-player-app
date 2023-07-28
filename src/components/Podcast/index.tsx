@@ -23,11 +23,16 @@ const Podcast = ({ onLoading }: PodcastProps) => {
       {podcastDetails &&
         <div className={styles.container}>
           <div className={styles.cardContainer}>
-            <PodcastDetails podcastId={id as string} details={podcastDetails?.details as PodcastEpisodesDetails} />
+            <PodcastDetails
+              podcastId={id as string}
+              details={podcastDetails?.details as PodcastEpisodesDetails}
+            />
           </div>
-
           <div className={styles.episodesListContainer}>
-            <PodcastEpisodesList count={podcastDetails?.count} episodes={podcastDetails?.episodes} />
+            <PodcastEpisodesList
+              count={podcastDetails?.count}
+              episodes={podcastDetails?.episodes}
+            />
           </div>
         </div>}
     </section>
