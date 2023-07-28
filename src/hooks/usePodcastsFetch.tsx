@@ -8,7 +8,7 @@ const usePodcastsFetch = () => {
 
   React.useEffect(() => {
     // Get podcasts in localStorage, if there are any.
-    const oneDayInMilliseconds = 24
+    const oneDayInMilliseconds = 24 * 60 * 60 * 1000
     const storageKey = 'podcastList'
 
     const storedPodcasts = localStorage.getItem(storageKey)
