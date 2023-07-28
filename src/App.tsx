@@ -11,8 +11,8 @@ const App = (): React.JSX.Element => {
       <Route path='/' element={<Layout />}>
         <Route index element={<Home />} />
         <Route path='/podcast/:id' element={<Podcast />} />
-        <Route path='/podcast/:id/episode/:episodeId' element={<PodcastEpisode />} />{
-        /* Catch-all route to redirect undefined paths to the home page */}
+        <Route path='/podcast/:id/episode/:episodeId' element={<PodcastEpisode />} />
+        {/* Catch-all route to redirect undefined paths to the home page */}
         <Route path='*' element={<Navigate to='/' replace />} />
       </Route>
     </Routes>

@@ -1,5 +1,5 @@
 import { PodcastListType, PodcastEpisodes, PodcastEpisodesType, PodcastEpisodesDetails, PodcastEpisodeData, PodcastsFetchedData } from './types'
-
+import { DateTime, Duration } from 'luxon'
 export const getPodcastsListNormalizedData = (data: PodcastsFetchedData): PodcastListType[] => {
   return data.feed.entry.map((item) => {
     return {
@@ -19,4 +19,16 @@ export const getPodcastEpisodesDataNormalized = (data: PodcastEpisodes): Podcast
     details: details as PodcastEpisodesDetails,
     episodes: episodes as PodcastEpisodeData[]
   }
+}
+
+export const getEpisodeDuration = (timeInMiliseconds: number) => {
+  const duration = Duration.fromMillis(timeInMiliseconds)
+  const formattedTime = duration.toFormat('mm:ss')
+  return formattedTime
+}
+
+export const getReleaseDate = (isoDate: string) => {
+  const date = DateTime.fromISO(isoDate)
+  const formattedDate = date.toFormat('d/M/yyyy')
+  return formattedDate
 }

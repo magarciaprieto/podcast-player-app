@@ -14,12 +14,13 @@ const PodcastDetails = ({ details, podcastId }: PodcastDetailsProps) => {
       <div className={styles.imageContainer}>
         <img className={styles.image} src={artworkUrl600} alt='' />
       </div>
-      <div className={styles.textContainer}>
+      <div className={styles.titleAndArtistContainer}>
         <span className={styles.title}>{podcast.title}</span>
         <span className={styles.artist}>by {artistName}</span>
       </div>
-      <div className={styles.textContainer}>
-        <span>{podcast.summary}</span>
+      <div className={styles.summaryContainer}>
+        <span className={styles.description}>Description:</span>
+        <span className={styles.summary}>{podcast.summary}</span>
       </div>
     </article>
   )

@@ -1,11 +1,12 @@
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
   border: 1px solid #D2D2D2;
-  min-height: 500px;
   width: 350px;
+  box-shadow: 0px 2px 8px -1px rgba(0,0,0,0.65);
+  -webkit-box-shadow: 0px 2px 8px -1px rgba(0,0,0,0.65);
+  -moz-box-shadow: 0px 2px 8px -1px rgba(0,0,0,0.65);
 }
 
 .imageContainer {
@@ -18,26 +19,50 @@
 
 .image {
   width: 250px;
+  margin: 2rem;
   height: 250px;
   border-radius: 8px;
-  padding-bottom: 20px;
 }
 
-.textContainer {
+.titleAndArtistContainer {
   display: flex;
-  width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  border-bottom: 1px solid #D2D2D2;
+  width: 95%;
+  letter-spacing: .5px;
+  min-height: 100px;
+  gap: .25rem;
 }
 
 .title {
-  padding-left: 1.5rem;
   font-weight: bold;
   font-size: 20px;
+  margin: 0 1rem;
 }
 
 .artist {
-  padding-left: 1.5rem;
   font-style: italic;
+  margin: 0 1rem;
+}
+
+.description {
+  font-weight: bold;
+}
+
+.summary {
+  font-style: italic;
+  letter-spacing: .5px;
+}
+
+.summaryContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0;
+  width: 95%;
+  gap: .5rem;
+  overflow: hidden; 
+  word-wrap: break-word;
+  hyphens: auto;
 }
