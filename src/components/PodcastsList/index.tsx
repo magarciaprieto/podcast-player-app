@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import ListItem from '../ListItem'
+import PodcastsListItem from '../PodcastsListItem'
 import styles from './index.module.css'
 import usePodcastsFetch from '../../hooks/usePodcastsFetch'
 import Top100PodcastsIcon from '../Top100PodcastsIcon'
 
-interface HomeProps {
+interface PodcastsListProps {
   onLoading: (value: boolean) => void;
 }
 
-const Home = ({ onLoading }: HomeProps) => {
+const PodcastsList = ({ onLoading }: PodcastsListProps) => {
   const { podcasts, isFetching } = usePodcastsFetch()
   const [searchQuery, setSearchQuery] = useState('')
 
@@ -20,7 +20,6 @@ const Home = ({ onLoading }: HomeProps) => {
     if (!searchQuery) {
       return podcasts
     }
-
     const searchTerm = searchQuery.toLowerCase()
     return podcasts.filter(
       (podcast) =>
@@ -43,11 +42,11 @@ const Home = ({ onLoading }: HomeProps) => {
       </div>
       <div className={styles.listContainer}>
         {filteredPodcasts.map((podcast, idx) => (
-          <ListItem key={idx} podcast={podcast} />
+          <PodcastsListItem key={idx} podcast={podcast} />
         ))}
       </div>
     </div>
   )
 }
 
-export default Home
+export default PodcastsList

@@ -2,10 +2,10 @@ import { useNavigate } from 'react-router-dom'
 import { PodcastListType } from '../../types'
 import styles from './index.module.css'
 
-interface ListItemProps {
+interface PodcastsListItemProps {
   podcast: PodcastListType
 }
-const ListItem = ({ podcast }: ListItemProps) => {
+const PodcastsListItem = ({ podcast }: PodcastsListItemProps) => {
   const navigate = useNavigate()
 
   const handleClick = () => {
@@ -27,4 +27,4 @@ const ListItem = ({ podcast }: ListItemProps) => {
   )
 }
 
-export default ListItem
+export default PodcastsListItem
