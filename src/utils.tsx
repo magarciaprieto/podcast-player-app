@@ -1,3 +1,4 @@
+import { PODCASTS_LIST_API_ENDPOINT } from './shared/constants'
 import { PodcastListType, PodcastEpisodes, PodcastEpisodesType, PodcastEpisodesDetails, PodcastEpisodeData, PodcastsFetchedData } from './types'
 import { DateTime, Duration } from 'luxon'
 export const getPodcastsListNormalizedData = (data: PodcastsFetchedData): PodcastListType[] => {
@@ -31,4 +32,17 @@ export const getReleaseDate = (isoDate: string) => {
   const date = DateTime.fromISO(isoDate)
   const formattedDate = date.toFormat('d/M/yyyy')
   return formattedDate
+}
+
+export const getPodcastsDataURL = () => {
+  const externalURL = PODCASTS_LIST_API_ENDPOINT
+  const encodedURL = encodeURIComponent(externalURL)
+  const allOriginsURL = `https://allorigins.win/get?url=${encodedURL}`
+  return allOriginsURL
+}
+export const getPodcastEpisodesDataURL = (id: string) => {
+  const externalURL = `https://itunes.apple.com/lookup?id=${id}&media=podcast&entity=podcastEpisode&limit=20`
+  const encodedURL = encodeURIComponent(externalURL)
+  const allOriginsURL = `https://api.allorigins.win/get?url=${encodedURL}`
+  return allOriginsURL
 }

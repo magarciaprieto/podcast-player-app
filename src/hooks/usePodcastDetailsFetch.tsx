@@ -1,6 +1,6 @@
 import React from 'react'
 import { PodcastEpisodes, PodcastEpisodesType } from '../types'
-import { getPodcastEpisodesDataNormalized } from '../utils'
+import { getPodcastEpisodesDataNormalized, getPodcastEpisodesDataURL } from '../utils'
 
 const usePodcastDetailsFetch = (id: string) => {
   const [podcastDetails, setPodcastDetails] = React.useState<PodcastEpisodesType>()
@@ -24,34 +24,52 @@ const usePodcastDetailsFetch = (id: string) => {
         return
       }
     }
-    const fetchPodcastDetails = async () => {
+
+    const fetchPodcastEpisodesData = async () => {
       try {
         setLoading(true)
-        /* const externalURL = `https://itunes.apple.com/lookup?id=${id}&media=podcast&entity=podcastEpisode&limit=20`
-        const encodedURL = encodeURIComponent(externalURL)
-        const allOriginsURL = `https://allorigins.win/get?url=${encodedURL}`
-        console.log(allOriginsURL)
- */
-        const response = await fetch(`https://itunes.apple.com/lookup?id=${id}&media=podcast&entity=podcastEpisode&limit=20`)
 
-        if (!response.ok) {
+        const directURL = `https://itunes.apple.com/lookup?id=${id}&media=podcast&entity=podcastEpisode&limit=20`
+        const directResponse = await fetch(directURL)
+
+        if (!directResponse.ok) {
           throw new Error('Failed to fetch podcast details')
         }
-        const data: PodcastEpisodes = await response.json()
+
+        const data: PodcastEpisodes = await directResponse.json()
         const newData = getPodcastEpisodesDataNormalized(data)
-        // Save fetched data + current time on localStorage
+
         localStorage.setItem(storageKey, JSON.stringify(newData))
         localStorage.setItem(`${storageKey}-lastFetchedDate`, String(new Date().getTime()))
 
         setPodcastDetails(newData)
         setLoading(false)
       } catch (error) {
-        setLoading(false)
-        console.error('Error fetching podcasts:', error)
+        try {
+          const allOriginsURL = getPodcastEpisodesDataURL(id)
+          const fallbackResponse = await fetch(allOriginsURL)
+
+          if (!fallbackResponse.ok) {
+            throw new Error('Failed to fetch podcast details from the fallback URL')
+          }
+
+          const data = await fallbackResponse.json()
+          const parsedData: PodcastEpisodes = JSON.parse(data.contents)
+          const newData = getPodcastEpisodesDataNormalized(parsedData)
+
+          localStorage.setItem(storageKey, JSON.stringify(newData))
+          localStorage.setItem(`${storageKey}-lastFetchedDate`, String(new Date().getTime()))
+
+          setPodcastDetails(newData)
+          setLoading(false)
+        } catch (error) {
+          setLoading(false)
+          console.error('Error fetching podcasts:', error)
+        }
       }
     }
 
-    fetchPodcastDetails()
+    fetchPodcastEpisodesData()
   }, [id])
 
   return { podcastDetails, isFetching: loading }
