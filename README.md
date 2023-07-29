@@ -38,11 +38,17 @@ npm run build
 npm run serve
 ```
 
+This command will serve the application from the dist folder on the default port: `http://127.0.0.1:8080`.
+
 In case the previous commands failed, please install http-server globally:
 
 ```bash
 npm install -g http-server
 ```
+
+Please note that installing http-server globally requires Node.js and npm to be installed on your system.
+
+vbnet
 
 ## Additional Information
 
