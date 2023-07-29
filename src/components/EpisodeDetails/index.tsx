@@ -1,3 +1,4 @@
+import React from 'react'
 import { PodcastEpisodeData } from '../../types'
 import AudioPlayer from '../AudioPlayer'
 import styles from './index.module.css'

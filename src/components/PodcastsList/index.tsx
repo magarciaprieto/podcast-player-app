@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PodcastsListItem from '../PodcastsListItem'
 import styles from './index.module.css'
 import usePodcastsFetch from '../../hooks/usePodcastsFetch'
@@ -10,7 +10,7 @@ interface PodcastsListProps {
 
 const PodcastsList = ({ onLoading }: PodcastsListProps) => {
   const { podcasts, isFetching } = usePodcastsFetch()
-  const [searchQuery, setSearchQuery] = useState('')
+  const [searchQuery, setSearchQuery] = React.useState('')
 
   React.useEffect(() => {
     onLoading(isFetching)

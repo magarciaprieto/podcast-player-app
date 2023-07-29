@@ -1,3 +1,4 @@
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { PodcastEpisodesDetails, PodcastListType } from '../../types'
 import styles from './index.module.css'

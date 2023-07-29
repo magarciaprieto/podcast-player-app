@@ -1,3 +1,4 @@
+import React from 'react'
 import { useParams } from 'react-router-dom'
 import { PodcastEpisodeData, PodcastEpisodesDetails, PodcastEpisodesType } from '../../types'
 import styles from './index.module.css'

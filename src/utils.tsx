@@ -37,7 +37,7 @@ export const getReleaseDate = (isoDate: string) => {
 export const getPodcastsDataURL = () => {
   const externalURL = PODCASTS_LIST_API_ENDPOINT
   const encodedURL = encodeURIComponent(externalURL)
-  const allOriginsURL = `https://allorigins.win/get?url=${encodedURL}`
+  const allOriginsURL = `https://api.allorigins.win/get?url=${encodedURL}`
   return allOriginsURL
 }
 export const getPodcastEpisodesDataURL = (id: string) => {
