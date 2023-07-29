@@ -21,12 +21,12 @@ npm run dev
 
 The application will be served at `http://localhost:3000/`.
 
-## Testing
+## Checking type / ESlint errors
 
 To run TypeScript and ESLint checks:
 
 ```bash
-npm test
+npm run type
 ```
 
 ## Building for Production
@@ -35,6 +35,13 @@ To build the app for production:
 
 ```bash
 npm run build
+npm run serve
+```
+
+In case the previous commands failed, please install http-server globally:
+
+```bash
+npm install -g http-server
 ```
 
 ## Additional Information

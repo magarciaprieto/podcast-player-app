@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "test": "eslint . --ext .ts && tsc --noEmit",
+    "type": "eslint . --ext .ts && tsc --noEmit",
+    "serve": "npx http-server dist",
     "preview": "vite preview"
   },
   "dependencies": {
