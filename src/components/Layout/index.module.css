@@ -1,0 +1,21 @@
+.container {
+  margin: 0 16rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  border-bottom: 3px solid #D2D2D2;
+  justify-content: space-between;
+}
+
+.title {
+  color: #483285;
+  cursor: pointer;
+}
+
+.mainContainer {
+  margin: 2rem
+}

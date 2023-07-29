@@ -1,0 +1,24 @@
+.searchContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.filter {
+  width: 400px;
+  padding: 1rem;
+  border: 1px solid #D2D2D2;
+  font-size: 18px;
+  border-radius: 8px;
+  box-shadow: 0px -2px 4px -1px rgba(0,0,0,0.4);
+  -webkit-box-shadow: 0px -2px 4px -1px rgba(0,0,0,0.4);
+  -moz-box-shadow: 0px -2px 4px -1px rgba(0,0,0,0.4);
+}
+
+.listContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
