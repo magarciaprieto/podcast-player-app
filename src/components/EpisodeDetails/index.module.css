@@ -13,23 +13,3 @@
 .audioPlayerContainer {
   margin:2rem 0
 }
-
-.audioPlayer {
-  width: 100%;
-  background-color: black;
-  border-radius: 8px;
-}
-.audioPlayer audio {
-  background-color: black; /* Set the background color to black */
-}
-
-/* Style the play button */
-.audioPlayer audio::-webkit-media-controls-playback-button {
-  color: white; /* Set the color of the play button to white */
-}
-
-/* Style the volume control */
-.audioPlayer audio::-webkit-media-controls-volume-slider {
-  /* You can customize the appearance of the volume control here */
-  color: white; /* Set the color of the play button to white */
-}

@@ -1,5 +1,6 @@
 import React from 'react'
 import { PodcastEpisodeData } from '../../types'
+import DOMPurify from 'dompurify'
 import AudioPlayer from '../AudioPlayer'
 import styles from './index.module.css'
 
@@ -7,6 +8,8 @@ interface EpisodeDetailsProps {
   episode: PodcastEpisodeData;
 }
 const EpisodeDetails = ({ episode }: EpisodeDetailsProps) => {
+  const sanitizedDescription = DOMPurify.sanitize(episode.description)
+
   return (
     <article className={styles.episodeContainer}>
       <div>
@@ -15,9 +18,7 @@ const EpisodeDetails = ({ episode }: EpisodeDetailsProps) => {
         </h2>
       </div>
       <div>
-        <span>
-          {episode.description}
-        </span>
+        <span dangerouslySetInnerHTML={{ __html: sanitizedDescription }} />
       </div>
       <div className={styles.audioPlayerContainer}>
         <AudioPlayer audioUrl={episode.episodeUrl} />
