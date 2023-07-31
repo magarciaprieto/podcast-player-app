@@ -12,7 +12,7 @@ const PodcastEpisode = () => {
 
   return (
     <section>
-      {episode &&
+      {episode && (
         <div className={styles.container}>
           <div className={styles.cardContainer}>
             <PodcastDetails
@@ -28,7 +28,8 @@ const PodcastEpisode = () => {
             />
           </div>
 
-        </div>}
+        </div>
+      )}
     </section>
   )
 }

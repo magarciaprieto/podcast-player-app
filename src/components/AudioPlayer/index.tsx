@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faPause, faVolumeUp, faVolumeMute } from '@fortawesome/free-solid-svg-icons'
 import styles from './index.module.css'
@@ -16,8 +16,8 @@ interface PlayerState {
 }
 
 const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioUrl }) => {
-  const audioRef = useRef<HTMLAudioElement | null>(null)
-  const [playerState, setPlayerState] = useState<PlayerState>({
+  const audioRef = React.useRef<HTMLAudioElement | null>(null)
+  const [playerState, setPlayerState] = React.useState<PlayerState>({
     isPlaying: false,
     showVolumeControl: false,
     volume: 1,
@@ -27,7 +27,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioUrl }) => {
 
   const { isPlaying, showVolumeControl, volume, currentTime, duration } = playerState
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (audioRef.current) {
       audioRef.current.addEventListener('timeupdate', handleTimeUpdate)
       audioRef.current.addEventListener('loadedmetadata', handleLoadedMetadata)

@@ -48,7 +48,8 @@ const PodcastEpisodesList = ({ count, episodes }: PodcastEpisodesListProps) => {
                 </td>
                 <td className={styles.releaseDate}> {getReleaseDate(episode.releaseDate)} </td>
                 <td className={styles.episodeDuration}> {getEpisodeDuration(episode.trackTimeMillis)}</td>
-              </tr>)
+              </tr>
+            )
             )}
           </tbody>
         </table>

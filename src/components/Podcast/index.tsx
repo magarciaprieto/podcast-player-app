@@ -20,7 +20,7 @@ const Podcast = ({ onLoading }: PodcastProps) => {
 
   return (
     <section>
-      {podcastDetails &&
+      {podcastDetails && (
         <div className={styles.container}>
           <div className={styles.cardContainer}>
             <PodcastDetails
@@ -34,7 +34,8 @@ const Podcast = ({ onLoading }: PodcastProps) => {
               episodes={podcastDetails?.episodes}
             />
           </div>
-        </div>}
+        </div>
+      )}
     </section>
   )
 }
